@@ -9,6 +9,8 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.Positive;
 
+import com.youtube.microservices.model.Product;
+
 import lombok.Data;
 
 @Entity
@@ -31,6 +33,8 @@ public class InvoiceItem {
 	@Transient
 	private Double subTotal;
 	
+	@Transient
+	private Product product;
 	
 	public Double getSubTotal() {
 		if(this.quantity > 0 && this.price > 0) {

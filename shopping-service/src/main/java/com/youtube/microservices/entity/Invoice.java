@@ -17,9 +17,11 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.Valid;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.youtube.microservices.model.Customer;
 
 import lombok.Data;
 
@@ -55,6 +57,9 @@ public class Invoice {
 	public Invoice() {
 		items = new ArrayList<>();
 	}
+	
+	@Transient
+	private Customer customer;
 	
 	@PrePersist
 	public void prePersist() {
