@@ -4,24 +4,24 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost/8099/eureka
+      defaultZone: http://localhost:8099/eureka/
 
 spring:
   cloud:
     gateway:
       discovery:
-        locator: 
-          enable: true
-        routes:
-          - id: customer-serevice
-            uri: lb://customer-service
-            predicates:
-              - Path=/customers/**
-          - id: product-serevice
-            uri: lb://product-service
-            predicates:
-              - Path=/products/**
-          - id: shopping-serevice
-            uri: lb://shopping-service
-            predicates:
-              - Path=/shopping/**
+        locator:
+          enabled: true
+      routes:
+        - id: customer-service
+          uri: lb://customer-service
+          predicates:
+            - Path=/customers/**
+        - id: product-service
+          uri: lb://product-service
+          predicates:
+            - Path=/products/**
+        - id: shopping-service
+          uri: lb://shopping-service
+          predicates:
+            - Path=/invoices/**
